@@ -1,0 +1,42 @@
+# Enhanced TTS Training Configuration
+# ===================================
+
+# File paths
+audio_path: "speech.mp3"
+transcription_path: "speech_transcription.json"
+
+# Training parameters
+steps: 8000                    # Reduced for faster debugging
+learning_rate: 1e-4           # Smaller LR for stability
+vocab_size: null              # Auto-detect from tokenizer
+
+# Model architecture
+text_dim: 256
+style_dim: 128
+hidden_dim: 512
+num_codebooks: 4
+codebook_size: 1024
+
+# Training settings
+batch_size: 1                 # Small batch for memory
+log_interval: 100             # Log every 100 steps
+save_interval: 2000           # Save every 2000 steps
+detailed_log_interval: 500    # Detailed progress every 500 steps
+
+# Data extraction
+target_duration: 6.0          # Duration of training fragments
+max_fragments: 6              # Number of fragments to extract
+
+# Memory optimization
+gradient_clip_norm: 1.0       # Gradient clipping
+enable_mixed_precision: false # Set to true if supported
+cpu_only: false              # Force CPU training
+
+# Generation testing
+test_iterations: [8, 12, 16]  # Different iteration counts to test
+min_iterations: 6             # Minimum iterations before early stop
+
+# Logging
+log_level: "INFO"            # DEBUG, INFO, WARNING, ERROR
+save_plots: true             # Save training plots
+save_audio_samples: true     # Save generated audio samples

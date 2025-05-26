@@ -1,0 +1,28 @@
+2025-05-24 18:25:13,647 - INFO - 🎯 Enhanced TTS - Simple Training
+2025-05-24 18:25:13,647 - INFO - ==================================================
+2025-05-24 18:25:13,647 - INFO - 📋 Strategy 1: Normal training
+2025-05-24 18:25:13,647 - INFO - ✅ All required files found
+2025-05-24 18:25:13,647 - INFO - 📦 Importing modules...
+2025-05-24 18:25:13,649 - ERROR - ❌ Import error: cannot import name 'train_enhanced_tts_system' from 'train' (/home/rizos/Downloads/ribosome_difusion/mambaTTS/train.py)
+2025-05-24 18:25:13,649 - INFO - 💡 Make sure all module files are in the same directory
+2025-05-24 18:25:13,649 - INFO - 
+📋 Strategy 2: Reduced parameters
+2025-05-24 18:25:13,649 - INFO -    Trying minimal configuration...
+2025-05-24 18:25:13,649 - INFO - 💡 To try minimal training:
+2025-05-24 18:25:13,649 - INFO -    1. Reduce steps to 1000
+2025-05-24 18:25:13,649 - INFO -    2. Use smaller model dimensions
+2025-05-24 18:25:13,649 - INFO -    3. Try CPU-only mode
+2025-05-24 18:25:13,649 - INFO - 
+📋 Strategy 3: System diagnosis
+2025-05-24 18:25:13,649 - INFO -    Python version: 3.11.12 | packaged by conda-forge | (main, Apr 10 2025, 22:23:25) [GCC 13.3.0]
+2025-05-24 18:25:13,649 - INFO -    PyTorch version: 2.5.1+cu121
+2025-05-24 18:25:13,687 - INFO -    CUDA available: 1 device(s)
+2025-05-24 18:25:13,692 - INFO -    Current device: 0
+2025-05-24 18:25:13,692 - INFO -    GPU memory: 0.00GB allocated, 0.00GB reserved
+2025-05-24 18:25:13,692 - INFO - 
+💡 Troubleshooting recommendations:
+2025-05-24 18:25:13,693 - INFO - 1. Ensure speech.mp3 and speech_transcription.json are valid
+2025-05-24 18:25:13,693 - INFO - 2. Try with CPU-only: add --cpu-only flag
+2025-05-24 18:25:13,693 - INFO - 3. Reduce training steps to 500-1000 for testing
+2025-05-24 18:25:13,693 - INFO - 4. Check that all Python modules are in the same directory
+2025-05-24 18:25:13,693 - INFO - 5. If using GPU, ensure sufficient VRAM (8GB+ recommended)

@@ -1,0 +1,15 @@
+{
+  "batch_idx": 3,
+  "num_chunks": 4,
+  "total_duration": 37.70599999999999,
+  "total_words": 60,
+  "no_overlaps": true,
+  "sequential": true,
+  "clean_boundaries": true,
+  "chunk_files": [
+    "chunk_00_108.4-116.4s.pt",
+    "chunk_01_116.5-126.6s.pt",
+    "chunk_02_126.7-137.1s.pt",
+    "chunk_03_137.2-146.1s.pt"
+  ]
+}

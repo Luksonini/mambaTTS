@@ -1,0 +1,73 @@
+{
+  "token_shape": [
+    8,
+    2868
+  ],
+  "token_statistics": {
+    "codebook_0": {
+      "min": 1,
+      "max": 1022,
+      "mean": 460.0313720703125,
+      "unique_tokens": 517
+    },
+    "codebook_1": {
+      "min": 4,
+      "max": 1023,
+      "mean": 546.0686645507812,
+      "unique_tokens": 593
+    },
+    "codebook_2": {
+      "min": 0,
+      "max": 1023,
+      "mean": 587.2911376953125,
+      "unique_tokens": 622
+    },
+    "codebook_3": {
+      "min": 4,
+      "max": 1022,
+      "mean": 561.7353515625,
+      "unique_tokens": 643
+    },
+    "codebook_4": {
+      "min": 3,
+      "max": 1022,
+      "mean": 563.0205688476562,
+      "unique_tokens": 669
+    },
+    "codebook_5": {
+      "min": 2,
+      "max": 1022,
+      "mean": 617.74267578125,
+      "unique_tokens": 696
+    },
+    "codebook_6": {
+      "min": 1,
+      "max": 1023,
+      "mean": 615.4277954101562,
+      "unique_tokens": 681
+    },
+    "codebook_7": {
+      "min": 0,
+      "max": 1023,
+      "mean": 604.7559204101562,
+      "unique_tokens": 702
+    }
+  },
+  "estimated_duration": 38.24,
+  "codebook_info": {
+    "num_codebooks": 8,
+    "codebook_size": 1024,
+    "sample_rate": 24000,
+    "format": "EnCodec_8codebook_tokens"
+  },
+  "generation_info": {
+    "model": "Enhanced8CodebookTTSModel",
+    "training": "enhanced_8codebook_no_overlap"
+  },
+  "texts": [
+    "Chunk 1: jak mo\u017ce wygl\u0105da\u0107 \u017cycie bez ni...",
+    "Chunk 2: o rodzinne strony, przywo\u0142ywal...",
+    "Chunk 3: zakl\u0119cia, kt\u00f3re mia\u0142y te wiosk...",
+    "Chunk 4: dawne \u017cycie zburzyli \u017co\u0142nierze..."
+  ]
+}
