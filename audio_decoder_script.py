@@ -252,7 +252,7 @@ def main():
     # Load generated tokens
     try:
         logger.info("📂 Loading generated 8-codebook tokens...")
-        data = torch.load('enhanced_8codebook_audio_tokens.pt', map_location='cpu')
+        data = torch.load('full_mamba_audio_tokens.pt', map_location='cpu')
         audio_tokens = data['audio_tokens']  # [8, T]
         
         logger.info(f"✅ Loaded tokens: {audio_tokens.shape}")

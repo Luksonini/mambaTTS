@@ -1,0 +1,12 @@
+Full Mamba Audio Generation Results
+========================================
+
+Architecture: Full Mamba with Backward Style Extractor
+Audio tokens shape: torch.Size([8, 499])
+Text: służbę i czy wieczorem widziano ich pijących tęgo w którymś z przydrożnych barów. Mieszkańcy Palęgi
+
+Key features:
+- All Mamba blocks (no Conv1D)
+- Backward Mamba style extractor
+- Enhanced temporal modeling
+- Timing-optimized architecture
