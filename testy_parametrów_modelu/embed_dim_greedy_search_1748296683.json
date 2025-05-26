@@ -1,0 +1,902 @@
+{
+  "phase_1_results": {
+    "E256_H768": {
+      "experiment_type": "PHASE_1_E256_H768",
+      "config": {
+        "name": "E256_H768",
+        "embed_dim": 256,
+        "hidden_dim": 768,
+        "num_layers": 4,
+        "expand_factor": 1.5,
+        "num_codebooks": 8,
+        "codebook_size": 1024,
+        "dropout": 0.1
+      },
+      "success": true,
+      "training_time": 70.16636323928833,
+      "final_accuracy": 0.7570236027240753,
+      "best_accuracy": 0.836444690823555,
+      "avg_step_time": 0.06912138485908509,
+      "param_count": 54172161,
+      "embed_params": {
+        "text_embed": 33536,
+        "text_proj": 196608,
+        "audio_embed": 2097152,
+        "audio_proj": 1572864,
+        "pos_embed": 524288,
+        "pos_proj": 196608,
+        "total_embedding": 4621056,
+        "total_processing": 17283072,
+        "total_model": 21904128,
+        "embed_ratio": 0.3333333333333333
+      },
+      "efficiency_score": 1.3752255956335495,
+      "milestones": {
+        "10.0%": 220,
+        "20.0%": 364,
+        "30.0%": 441,
+        "40.0%": 477,
+        "50.0%": 562,
+        "60.0%": 655,
+        "70.0%": 798,
+        "80.0%": 972
+      },
+      "total_steps": 1000
+    },
+    "E512_H768": {
+      "experiment_type": "PHASE_1_E512_H768",
+      "config": {
+        "name": "E512_H768",
+        "embed_dim": 512,
+        "hidden_dim": 768,
+        "num_layers": 4,
+        "expand_factor": 1.5,
+        "num_codebooks": 8,
+        "codebook_size": 1024,
+        "dropout": 0.1
+      },
+      "success": true,
+      "training_time": 71.34410738945007,
+      "final_accuracy": 0.7494171112775803,
+      "best_accuracy": 0.8581382483243942,
+      "avg_step_time": 0.07093552303314209,
+      "param_count": 58793217,
+      "embed_params": {
+        "text_embed": 67072,
+        "text_proj": 393216,
+        "audio_embed": 4194304,
+        "audio_proj": 3145728,
+        "pos_embed": 1048576,
+        "pos_proj": 393216,
+        "total_embedding": 9242112,
+        "total_processing": 17283072,
+        "total_model": 26525184,
+        "embed_ratio": 0.6666666666666666
+      },
+      "efficiency_score": 1.353901693698565,
+      "milestones": {
+        "10.0%": 232,
+        "20.0%": 386,
+        "30.0%": 467,
+        "40.0%": 509,
+        "50.0%": 535,
+        "60.0%": 649,
+        "70.0%": 792,
+        "80.0%": 842
+      },
+      "total_steps": 1000
+    },
+    "E768_H768": {
+      "experiment_type": "PHASE_1_E768_H768",
+      "config": {
+        "name": "E768_H768",
+        "embed_dim": 768,
+        "hidden_dim": 768,
+        "num_layers": 4,
+        "expand_factor": 1.5,
+        "num_codebooks": 8,
+        "codebook_size": 1024,
+        "dropout": 0.1
+      },
+      "success": true,
+      "training_time": 59.81955552101135,
+      "final_accuracy": 0.9200207442045212,
+      "best_accuracy": 0.9200207442045212,
+      "avg_step_time": 0.07526659391376607,
+      "param_count": 62233089,
+      "embed_params": {
+        "text_embed": 100608,
+        "text_proj": 0,
+        "audio_embed": 6291456,
+        "audio_proj": 0,
+        "pos_embed": 1572864,
+        "pos_proj": 0,
+        "total_embedding": 7964928,
+        "total_processing": 17283072,
+        "total_model": 25248000,
+        "embed_ratio": 1.0
+      },
+      "efficiency_score": 1.4255494842162633,
+      "milestones": {
+        "10.0%": 130,
+        "20.0%": 290,
+        "30.0%": 350,
+        "40.0%": 372,
+        "50.0%": 459,
+        "60.0%": 463,
+        "70.0%": 556,
+        "80.0%": 648,
+        "90.0%": 788
+      },
+      "total_steps": 789
+    }
+  },
+  "phase_2_results": {
+    "E640_H768": {
+      "experiment_type": "PHASE_2_E640_H768",
+      "config": {
+        "name": "E640_H768",
+        "embed_dim": 640,
+        "hidden_dim": 768,
+        "num_layers": 4,
+        "expand_factor": 1.5,
+        "num_codebooks": 8,
+        "codebook_size": 1024,
+        "dropout": 0.1
+      },
+      "success": true,
+      "training_time": 75.83936142921448,
+      "final_accuracy": 0.6279339790344238,
+      "best_accuracy": 0.7272005826234818,
+      "avg_step_time": 0.07541864395141601,
+      "param_count": 61103745,
+      "embed_params": {
+        "text_embed": 83840,
+        "text_proj": 491520,
+        "audio_embed": 5242880,
+        "audio_proj": 3932160,
+        "pos_embed": 1310720,
+        "pos_proj": 491520,
+        "total_embedding": 11552640,
+        "total_processing": 17283072,
+        "total_model": 28835712,
+        "embed_ratio": 0.8333333333333334
+      },
+      "efficiency_score": 0.8970069389520428,
+      "milestones": {
+        "10.0%": 140,
+        "20.0%": 382,
+        "30.0%": 483,
+        "40.0%": 571,
+        "50.0%": 665,
+        "60.0%": 758,
+        "70.0%": 920
+      },
+      "total_steps": 1000
+    },
+    "E768_H768": {
+      "experiment_type": "PHASE_2_E768_H768",
+      "config": {
+        "name": "E768_H768",
+        "embed_dim": 768,
+        "hidden_dim": 768,
+        "num_layers": 4,
+        "expand_factor": 1.5,
+        "num_codebooks": 8,
+        "codebook_size": 1024,
+        "dropout": 0.1
+      },
+      "success": true,
+      "training_time": 64.37526726722717,
+      "final_accuracy": 0.9110178798437119,
+      "best_accuracy": 0.9110178798437119,
+      "avg_step_time": 0.07575435717523946,
+      "param_count": 62233089,
+      "embed_params": {
+        "text_embed": 100608,
+        "text_proj": 0,
+        "audio_embed": 6291456,
+        "audio_proj": 0,
+        "pos_embed": 1572864,
+        "pos_proj": 0,
+        "total_embedding": 7964928,
+        "total_processing": 17283072,
+        "total_model": 25248000,
+        "embed_ratio": 1.0
+      },
+      "efficiency_score": 1.3887865597571634,
+      "milestones": {
+        "10.0%": 79,
+        "20.0%": 262,
+        "30.0%": 372,
+        "40.0%": 386,
+        "50.0%": 430,
+        "60.0%": 477,
+        "70.0%": 625,
+        "80.0%": 693,
+        "90.0%": 843
+      },
+      "total_steps": 844
+    },
+    "E896_H768": {
+      "experiment_type": "PHASE_2_E896_H768",
+      "config": {
+        "name": "E896_H768",
+        "embed_dim": 896,
+        "hidden_dim": 768,
+        "num_layers": 4,
+        "expand_factor": 1.5,
+        "num_codebooks": 8,
+        "codebook_size": 1024,
+        "dropout": 0.1
+      },
+      "success": true,
+      "training_time": 77.7394745349884,
+      "final_accuracy": 0.7507714033126831,
+      "best_accuracy": 0.8374492079019547,
+      "avg_step_time": 0.07727570128440857,
+      "param_count": 65724801,
+      "embed_params": {
+        "text_embed": 117376,
+        "text_proj": 688128,
+        "audio_embed": 7340032,
+        "audio_proj": 5505024,
+        "pos_embed": 1835008,
+        "pos_proj": 688128,
+        "total_embedding": 16173696,
+        "total_processing": 17283072,
+        "total_model": 33456768,
+        "embed_ratio": 1.1666666666666667
+      },
+      "efficiency_score": 1.1194620031819904,
+      "milestones": {
+        "10.0%": 106,
+        "20.0%": 362,
+        "30.0%": 445,
+        "40.0%": 497,
+        "50.0%": 548,
+        "60.0%": 591,
+        "70.0%": 680,
+        "80.0%": 894
+      },
+      "total_steps": 1000
+    }
+  },
+  "all_results": {
+    "E256_H768": {
+      "experiment_type": "PHASE_1_E256_H768",
+      "config": {
+        "name": "E256_H768",
+        "embed_dim": 256,
+        "hidden_dim": 768,
+        "num_layers": 4,
+        "expand_factor": 1.5,
+        "num_codebooks": 8,
+        "codebook_size": 1024,
+        "dropout": 0.1
+      },
+      "success": true,
+      "training_time": 70.16636323928833,
+      "final_accuracy": 0.7570236027240753,
+      "best_accuracy": 0.836444690823555,
+      "avg_step_time": 0.06912138485908509,
+      "param_count": 54172161,
+      "embed_params": {
+        "text_embed": 33536,
+        "text_proj": 196608,
+        "audio_embed": 2097152,
+        "audio_proj": 1572864,
+        "pos_embed": 524288,
+        "pos_proj": 196608,
+        "total_embedding": 4621056,
+        "total_processing": 17283072,
+        "total_model": 21904128,
+        "embed_ratio": 0.3333333333333333
+      },
+      "efficiency_score": 1.3752255956335495,
+      "milestones": {
+        "10.0%": 220,
+        "20.0%": 364,
+        "30.0%": 441,
+        "40.0%": 477,
+        "50.0%": 562,
+        "60.0%": 655,
+        "70.0%": 798,
+        "80.0%": 972
+      },
+      "total_steps": 1000
+    },
+    "E512_H768": {
+      "experiment_type": "PHASE_1_E512_H768",
+      "config": {
+        "name": "E512_H768",
+        "embed_dim": 512,
+        "hidden_dim": 768,
+        "num_layers": 4,
+        "expand_factor": 1.5,
+        "num_codebooks": 8,
+        "codebook_size": 1024,
+        "dropout": 0.1
+      },
+      "success": true,
+      "training_time": 71.34410738945007,
+      "final_accuracy": 0.7494171112775803,
+      "best_accuracy": 0.8581382483243942,
+      "avg_step_time": 0.07093552303314209,
+      "param_count": 58793217,
+      "embed_params": {
+        "text_embed": 67072,
+        "text_proj": 393216,
+        "audio_embed": 4194304,
+        "audio_proj": 3145728,
+        "pos_embed": 1048576,
+        "pos_proj": 393216,
+        "total_embedding": 9242112,
+        "total_processing": 17283072,
+        "total_model": 26525184,
+        "embed_ratio": 0.6666666666666666
+      },
+      "efficiency_score": 1.353901693698565,
+      "milestones": {
+        "10.0%": 232,
+        "20.0%": 386,
+        "30.0%": 467,
+        "40.0%": 509,
+        "50.0%": 535,
+        "60.0%": 649,
+        "70.0%": 792,
+        "80.0%": 842
+      },
+      "total_steps": 1000
+    },
+    "E768_H768": {
+      "experiment_type": "PHASE_2_E768_H768",
+      "config": {
+        "name": "E768_H768",
+        "embed_dim": 768,
+        "hidden_dim": 768,
+        "num_layers": 4,
+        "expand_factor": 1.5,
+        "num_codebooks": 8,
+        "codebook_size": 1024,
+        "dropout": 0.1
+      },
+      "success": true,
+      "training_time": 64.37526726722717,
+      "final_accuracy": 0.9110178798437119,
+      "best_accuracy": 0.9110178798437119,
+      "avg_step_time": 0.07575435717523946,
+      "param_count": 62233089,
+      "embed_params": {
+        "text_embed": 100608,
+        "text_proj": 0,
+        "audio_embed": 6291456,
+        "audio_proj": 0,
+        "pos_embed": 1572864,
+        "pos_proj": 0,
+        "total_embedding": 7964928,
+        "total_processing": 17283072,
+        "total_model": 25248000,
+        "embed_ratio": 1.0
+      },
+      "efficiency_score": 1.3887865597571634,
+      "milestones": {
+        "10.0%": 79,
+        "20.0%": 262,
+        "30.0%": 372,
+        "40.0%": 386,
+        "50.0%": 430,
+        "60.0%": 477,
+        "70.0%": 625,
+        "80.0%": 693,
+        "90.0%": 843
+      },
+      "total_steps": 844
+    },
+    "E640_H768": {
+      "experiment_type": "PHASE_2_E640_H768",
+      "config": {
+        "name": "E640_H768",
+        "embed_dim": 640,
+        "hidden_dim": 768,
+        "num_layers": 4,
+        "expand_factor": 1.5,
+        "num_codebooks": 8,
+        "codebook_size": 1024,
+        "dropout": 0.1
+      },
+      "success": true,
+      "training_time": 75.83936142921448,
+      "final_accuracy": 0.6279339790344238,
+      "best_accuracy": 0.7272005826234818,
+      "avg_step_time": 0.07541864395141601,
+      "param_count": 61103745,
+      "embed_params": {
+        "text_embed": 83840,
+        "text_proj": 491520,
+        "audio_embed": 5242880,
+        "audio_proj": 3932160,
+        "pos_embed": 1310720,
+        "pos_proj": 491520,
+        "total_embedding": 11552640,
+        "total_processing": 17283072,
+        "total_model": 28835712,
+        "embed_ratio": 0.8333333333333334
+      },
+      "efficiency_score": 0.8970069389520428,
+      "milestones": {
+        "10.0%": 140,
+        "20.0%": 382,
+        "30.0%": 483,
+        "40.0%": 571,
+        "50.0%": 665,
+        "60.0%": 758,
+        "70.0%": 920
+      },
+      "total_steps": 1000
+    },
+    "E896_H768": {
+      "experiment_type": "PHASE_2_E896_H768",
+      "config": {
+        "name": "E896_H768",
+        "embed_dim": 896,
+        "hidden_dim": 768,
+        "num_layers": 4,
+        "expand_factor": 1.5,
+        "num_codebooks": 8,
+        "codebook_size": 1024,
+        "dropout": 0.1
+      },
+      "success": true,
+      "training_time": 77.7394745349884,
+      "final_accuracy": 0.7507714033126831,
+      "best_accuracy": 0.8374492079019547,
+      "avg_step_time": 0.07727570128440857,
+      "param_count": 65724801,
+      "embed_params": {
+        "text_embed": 117376,
+        "text_proj": 688128,
+        "audio_embed": 7340032,
+        "audio_proj": 5505024,
+        "pos_embed": 1835008,
+        "pos_proj": 688128,
+        "total_embedding": 16173696,
+        "total_processing": 17283072,
+        "total_model": 33456768,
+        "embed_ratio": 1.1666666666666667
+      },
+      "efficiency_score": 1.1194620031819904,
+      "milestones": {
+        "10.0%": 106,
+        "20.0%": 362,
+        "30.0%": 445,
+        "40.0%": 497,
+        "50.0%": 548,
+        "60.0%": 591,
+        "70.0%": 680,
+        "80.0%": 894
+      },
+      "total_steps": 1000
+    }
+  },
+  "final_winner": {
+    "winner": "E768_H768",
+    "winner_result": {
+      "experiment_type": "PHASE_2_E768_H768",
+      "config": {
+        "name": "E768_H768",
+        "embed_dim": 768,
+        "hidden_dim": 768,
+        "num_layers": 4,
+        "expand_factor": 1.5,
+        "num_codebooks": 8,
+        "codebook_size": 1024,
+        "dropout": 0.1
+      },
+      "success": true,
+      "training_time": 64.37526726722717,
+      "final_accuracy": 0.9110178798437119,
+      "best_accuracy": 0.9110178798437119,
+      "avg_step_time": 0.07575435717523946,
+      "param_count": 62233089,
+      "embed_params": {
+        "text_embed": 100608,
+        "text_proj": 0,
+        "audio_embed": 6291456,
+        "audio_proj": 0,
+        "pos_embed": 1572864,
+        "pos_proj": 0,
+        "total_embedding": 7964928,
+        "total_processing": 17283072,
+        "total_model": 25248000,
+        "embed_ratio": 1.0
+      },
+      "efficiency_score": 1.3887865597571634,
+      "milestones": {
+        "10.0%": 79,
+        "20.0%": 262,
+        "30.0%": 372,
+        "40.0%": 386,
+        "50.0%": 430,
+        "60.0%": 477,
+        "70.0%": 625,
+        "80.0%": 693,
+        "90.0%": 843
+      },
+      "total_steps": 844
+    },
+    "best_accuracy": [
+      "E768_H768",
+      {
+        "experiment_type": "PHASE_2_E768_H768",
+        "config": {
+          "name": "E768_H768",
+          "embed_dim": 768,
+          "hidden_dim": 768,
+          "num_layers": 4,
+          "expand_factor": 1.5,
+          "num_codebooks": 8,
+          "codebook_size": 1024,
+          "dropout": 0.1
+        },
+        "success": true,
+        "training_time": 64.37526726722717,
+        "final_accuracy": 0.9110178798437119,
+        "best_accuracy": 0.9110178798437119,
+        "avg_step_time": 0.07575435717523946,
+        "param_count": 62233089,
+        "embed_params": {
+          "text_embed": 100608,
+          "text_proj": 0,
+          "audio_embed": 6291456,
+          "audio_proj": 0,
+          "pos_embed": 1572864,
+          "pos_proj": 0,
+          "total_embedding": 7964928,
+          "total_processing": 17283072,
+          "total_model": 25248000,
+          "embed_ratio": 1.0
+        },
+        "efficiency_score": 1.3887865597571634,
+        "milestones": {
+          "10.0%": 79,
+          "20.0%": 262,
+          "30.0%": 372,
+          "40.0%": 386,
+          "50.0%": 430,
+          "60.0%": 477,
+          "70.0%": 625,
+          "80.0%": 693,
+          "90.0%": 843
+        },
+        "total_steps": 844
+      }
+    ],
+    "best_efficiency": [
+      "E768_H768",
+      {
+        "experiment_type": "PHASE_2_E768_H768",
+        "config": {
+          "name": "E768_H768",
+          "embed_dim": 768,
+          "hidden_dim": 768,
+          "num_layers": 4,
+          "expand_factor": 1.5,
+          "num_codebooks": 8,
+          "codebook_size": 1024,
+          "dropout": 0.1
+        },
+        "success": true,
+        "training_time": 64.37526726722717,
+        "final_accuracy": 0.9110178798437119,
+        "best_accuracy": 0.9110178798437119,
+        "avg_step_time": 0.07575435717523946,
+        "param_count": 62233089,
+        "embed_params": {
+          "text_embed": 100608,
+          "text_proj": 0,
+          "audio_embed": 6291456,
+          "audio_proj": 0,
+          "pos_embed": 1572864,
+          "pos_proj": 0,
+          "total_embedding": 7964928,
+          "total_processing": 17283072,
+          "total_model": 25248000,
+          "embed_ratio": 1.0
+        },
+        "efficiency_score": 1.3887865597571634,
+        "milestones": {
+          "10.0%": 79,
+          "20.0%": 262,
+          "30.0%": 372,
+          "40.0%": 386,
+          "50.0%": 430,
+          "60.0%": 477,
+          "70.0%": 625,
+          "80.0%": 693,
+          "90.0%": 843
+        },
+        "total_steps": 844
+      }
+    ],
+    "best_speed": [
+      "E256_H768",
+      {
+        "experiment_type": "PHASE_1_E256_H768",
+        "config": {
+          "name": "E256_H768",
+          "embed_dim": 256,
+          "hidden_dim": 768,
+          "num_layers": 4,
+          "expand_factor": 1.5,
+          "num_codebooks": 8,
+          "codebook_size": 1024,
+          "dropout": 0.1
+        },
+        "success": true,
+        "training_time": 70.16636323928833,
+        "final_accuracy": 0.7570236027240753,
+        "best_accuracy": 0.836444690823555,
+        "avg_step_time": 0.06912138485908509,
+        "param_count": 54172161,
+        "embed_params": {
+          "text_embed": 33536,
+          "text_proj": 196608,
+          "audio_embed": 2097152,
+          "audio_proj": 1572864,
+          "pos_embed": 524288,
+          "pos_proj": 196608,
+          "total_embedding": 4621056,
+          "total_processing": 17283072,
+          "total_model": 21904128,
+          "embed_ratio": 0.3333333333333333
+        },
+        "efficiency_score": 1.3752255956335495,
+        "milestones": {
+          "10.0%": 220,
+          "20.0%": 364,
+          "30.0%": 441,
+          "40.0%": 477,
+          "50.0%": 562,
+          "60.0%": 655,
+          "70.0%": 798,
+          "80.0%": 972
+        },
+        "total_steps": 1000
+      }
+    ],
+    "ranking": [
+      [
+        "E768_H768",
+        {
+          "experiment_type": "PHASE_2_E768_H768",
+          "config": {
+            "name": "E768_H768",
+            "embed_dim": 768,
+            "hidden_dim": 768,
+            "num_layers": 4,
+            "expand_factor": 1.5,
+            "num_codebooks": 8,
+            "codebook_size": 1024,
+            "dropout": 0.1
+          },
+          "success": true,
+          "training_time": 64.37526726722717,
+          "final_accuracy": 0.9110178798437119,
+          "best_accuracy": 0.9110178798437119,
+          "avg_step_time": 0.07575435717523946,
+          "param_count": 62233089,
+          "embed_params": {
+            "text_embed": 100608,
+            "text_proj": 0,
+            "audio_embed": 6291456,
+            "audio_proj": 0,
+            "pos_embed": 1572864,
+            "pos_proj": 0,
+            "total_embedding": 7964928,
+            "total_processing": 17283072,
+            "total_model": 25248000,
+            "embed_ratio": 1.0
+          },
+          "efficiency_score": 1.3887865597571634,
+          "milestones": {
+            "10.0%": 79,
+            "20.0%": 262,
+            "30.0%": 372,
+            "40.0%": 386,
+            "50.0%": 430,
+            "60.0%": 477,
+            "70.0%": 625,
+            "80.0%": 693,
+            "90.0%": 843
+          },
+          "total_steps": 844
+        }
+      ],
+      [
+        "E256_H768",
+        {
+          "experiment_type": "PHASE_1_E256_H768",
+          "config": {
+            "name": "E256_H768",
+            "embed_dim": 256,
+            "hidden_dim": 768,
+            "num_layers": 4,
+            "expand_factor": 1.5,
+            "num_codebooks": 8,
+            "codebook_size": 1024,
+            "dropout": 0.1
+          },
+          "success": true,
+          "training_time": 70.16636323928833,
+          "final_accuracy": 0.7570236027240753,
+          "best_accuracy": 0.836444690823555,
+          "avg_step_time": 0.06912138485908509,
+          "param_count": 54172161,
+          "embed_params": {
+            "text_embed": 33536,
+            "text_proj": 196608,
+            "audio_embed": 2097152,
+            "audio_proj": 1572864,
+            "pos_embed": 524288,
+            "pos_proj": 196608,
+            "total_embedding": 4621056,
+            "total_processing": 17283072,
+            "total_model": 21904128,
+            "embed_ratio": 0.3333333333333333
+          },
+          "efficiency_score": 1.3752255956335495,
+          "milestones": {
+            "10.0%": 220,
+            "20.0%": 364,
+            "30.0%": 441,
+            "40.0%": 477,
+            "50.0%": 562,
+            "60.0%": 655,
+            "70.0%": 798,
+            "80.0%": 972
+          },
+          "total_steps": 1000
+        }
+      ],
+      [
+        "E512_H768",
+        {
+          "experiment_type": "PHASE_1_E512_H768",
+          "config": {
+            "name": "E512_H768",
+            "embed_dim": 512,
+            "hidden_dim": 768,
+            "num_layers": 4,
+            "expand_factor": 1.5,
+            "num_codebooks": 8,
+            "codebook_size": 1024,
+            "dropout": 0.1
+          },
+          "success": true,
+          "training_time": 71.34410738945007,
+          "final_accuracy": 0.7494171112775803,
+          "best_accuracy": 0.8581382483243942,
+          "avg_step_time": 0.07093552303314209,
+          "param_count": 58793217,
+          "embed_params": {
+            "text_embed": 67072,
+            "text_proj": 393216,
+            "audio_embed": 4194304,
+            "audio_proj": 3145728,
+            "pos_embed": 1048576,
+            "pos_proj": 393216,
+            "total_embedding": 9242112,
+            "total_processing": 17283072,
+            "total_model": 26525184,
+            "embed_ratio": 0.6666666666666666
+          },
+          "efficiency_score": 1.353901693698565,
+          "milestones": {
+            "10.0%": 232,
+            "20.0%": 386,
+            "30.0%": 467,
+            "40.0%": 509,
+            "50.0%": 535,
+            "60.0%": 649,
+            "70.0%": 792,
+            "80.0%": 842
+          },
+          "total_steps": 1000
+        }
+      ],
+      [
+        "E896_H768",
+        {
+          "experiment_type": "PHASE_2_E896_H768",
+          "config": {
+            "name": "E896_H768",
+            "embed_dim": 896,
+            "hidden_dim": 768,
+            "num_layers": 4,
+            "expand_factor": 1.5,
+            "num_codebooks": 8,
+            "codebook_size": 1024,
+            "dropout": 0.1
+          },
+          "success": true,
+          "training_time": 77.7394745349884,
+          "final_accuracy": 0.7507714033126831,
+          "best_accuracy": 0.8374492079019547,
+          "avg_step_time": 0.07727570128440857,
+          "param_count": 65724801,
+          "embed_params": {
+            "text_embed": 117376,
+            "text_proj": 688128,
+            "audio_embed": 7340032,
+            "audio_proj": 5505024,
+            "pos_embed": 1835008,
+            "pos_proj": 688128,
+            "total_embedding": 16173696,
+            "total_processing": 17283072,
+            "total_model": 33456768,
+            "embed_ratio": 1.1666666666666667
+          },
+          "efficiency_score": 1.1194620031819904,
+          "milestones": {
+            "10.0%": 106,
+            "20.0%": 362,
+            "30.0%": 445,
+            "40.0%": 497,
+            "50.0%": 548,
+            "60.0%": 591,
+            "70.0%": 680,
+            "80.0%": 894
+          },
+          "total_steps": 1000
+        }
+      ],
+      [
+        "E640_H768",
+        {
+          "experiment_type": "PHASE_2_E640_H768",
+          "config": {
+            "name": "E640_H768",
+            "embed_dim": 640,
+            "hidden_dim": 768,
+            "num_layers": 4,
+            "expand_factor": 1.5,
+            "num_codebooks": 8,
+            "codebook_size": 1024,
+            "dropout": 0.1
+          },
+          "success": true,
+          "training_time": 75.83936142921448,
+          "final_accuracy": 0.6279339790344238,
+          "best_accuracy": 0.7272005826234818,
+          "avg_step_time": 0.07541864395141601,
+          "param_count": 61103745,
+          "embed_params": {
+            "text_embed": 83840,
+            "text_proj": 491520,
+            "audio_embed": 5242880,
+            "audio_proj": 3932160,
+            "pos_embed": 1310720,
+            "pos_proj": 491520,
+            "total_embedding": 11552640,
+            "total_processing": 17283072,
+            "total_model": 28835712,
+            "embed_ratio": 0.8333333333333334
+          },
+          "efficiency_score": 0.8970069389520428,
+          "milestones": {
+            "10.0%": 140,
+            "20.0%": 382,
+            "30.0%": 483,
+            "40.0%": 571,
+            "50.0%": 665,
+            "60.0%": 758,
+            "70.0%": 920
+          },
+          "total_steps": 1000
+        }
+      ]
+    ]
+  },
+  "best_region": "high"
+}

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-No-Overlap Audio Preprocessor - Clean Sequential Chunks
-======================================================
-Creates clean sequential chunks WITHOUT overlaps
-Key benefits:
-- More training data (no duplicated tokens)
-- Simpler training (no masking needed)
-- Let Mamba learn natural transitions
-- Easier debugging and state management
+Batch No-Overlap Audio Preprocessor - Process all 6 samples
+===========================================================
+Automatically processes all 6 samples from whisper_transcription folder:
+- sample1.wav + sample1_transcription.json → clean_batch_00
+- sample2.wav + sample2_transcription.json → clean_batch_01
+- ... etc ...
+
+Each batch contains all chunks from one 11-minute recording (~66 chunks per batch)
 """
 
 import torch
@@ -22,27 +22,27 @@ import logging
 import warnings
 from typing import List, Dict, Tuple, Optional
 import math
+import glob
 
 warnings.filterwarnings("ignore", message=".*weight_norm.*deprecated.*")
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 
-class NoOverlapAudioPreprocessor:
+class BatchNoOverlapAudioPreprocessor:
     """
-    Clean sequential preprocessor WITHOUT overlaps
-    Let Mamba learn natural transitions between chunks
+    Batch processor for all 6 audio samples
+    Creates clean sequential chunks WITHOUT overlaps
+    One batch = one complete 11-minute recording
     """
     
     def __init__(self, 
-                 words_per_chunk: int = 15,          # Slightly larger chunks since no overlap
-                 chunks_per_batch: int = 4,          # Sequential chunks per batch  
-                 max_batches: int = 20,
+                 words_per_chunk: int = 15,          # ~10 seconds per chunk
+                 input_dir: str = "whisper_transcription",
                  output_dir: str = "no_overlap_data"):
         
         self.words_per_chunk = words_per_chunk
-        self.chunks_per_batch = chunks_per_batch
-        self.max_batches = max_batches
+        self.input_dir = Path(input_dir)
         self.output_dir = Path(output_dir)
         
         # Audio processing setup
@@ -61,14 +61,58 @@ class NoOverlapAudioPreprocessor:
         # Setup tokenizer
         self.tokenizer = NucleotideTokenizer()
         
-        logger.info(f"🎯 NoOverlapAudioPreprocessor initialized:")
-        logger.info(f"   Words per chunk: {words_per_chunk}")
+        logger.info(f"🎯 BatchNoOverlapAudioPreprocessor initialized:")
+        logger.info(f"   Words per chunk: {words_per_chunk} (~10 seconds)")
         logger.info(f"   NO OVERLAPS: Clean sequential chunks ✅")
-        logger.info(f"   Chunks per batch: {chunks_per_batch}")
-        logger.info(f"   Max batches: {max_batches}")
+        logger.info(f"   Input directory: {input_dir}")
         logger.info(f"   Output directory: {output_dir}")
+        logger.info(f"   Expected: 6 samples → 6 clean batches (~66 chunks each)")
         logger.info(f"   🎵 EnCodec ready")
         logger.info(f"   🔤 Tokenizer ready")
+    
+    def find_sample_files(self) -> List[Dict]:
+        """Find all sample pairs (audio + transcription)"""
+        logger.info(f"🔍 Searching for sample files in {self.input_dir}")
+        
+        samples = []
+        
+        # Look for processed audio files
+        audio_dir = self.input_dir / "processed_audio"
+        transcription_dir = self.input_dir / "transcriptions"
+        
+        if not audio_dir.exists():
+            logger.error(f"❌ Audio directory not found: {audio_dir}")
+            return []
+        
+        if not transcription_dir.exists():
+            logger.error(f"❌ Transcription directory not found: {transcription_dir}")
+            return []
+        
+        # Find sample files (sample1.wav, sample2.wav, etc.)
+        audio_files = sorted(audio_dir.glob("sample*.wav"))
+        
+        for audio_file in audio_files:
+            # Extract sample number from filename (e.g., sample1.wav → 1)
+            sample_name = audio_file.stem  # "sample1"
+            sample_num = sample_name.replace("sample", "")
+            
+            # Find corresponding transcription file
+            transcription_file = transcription_dir / f"{sample_name}_transcription.json"
+            
+            if transcription_file.exists():
+                samples.append({
+                    'sample_name': sample_name,
+                    'sample_num': int(sample_num),
+                    'audio_path': audio_file,
+                    'transcription_path': transcription_file,
+                    'batch_idx': int(sample_num) - 1  # 0-based batch index
+                })
+                logger.info(f"   ✅ Found {sample_name}: {audio_file.name} + {transcription_file.name}")
+            else:
+                logger.warning(f"   ⚠️  Missing transcription for {sample_name}: {transcription_file}")
+        
+        logger.info(f"📁 Found {len(samples)} complete sample pairs")
+        return samples
     
     def extract_words_from_whisperx(self, whisperx_data: Dict) -> List[Dict]:
         """Extract and validate words from WhisperX JSON"""
@@ -97,7 +141,8 @@ class NoOverlapAudioPreprocessor:
         all_words.sort(key=lambda x: x['start'])
         
         logger.info(f"✅ Extracted {len(all_words)} valid words")
-        logger.info(f"   Duration: {all_words[0]['start']:.1f}s - {all_words[-1]['end']:.1f}s")
+        if all_words:
+            logger.info(f"   Duration: {all_words[0]['start']:.1f}s - {all_words[-1]['end']:.1f}s")
         
         return all_words
     
@@ -124,178 +169,139 @@ class NoOverlapAudioPreprocessor:
         
         return True
     
-    def create_no_overlap_chunks(self, words: List[Dict]) -> List[List[Dict]]:
+    def create_chunks_for_full_recording(self, words: List[Dict], sample_name: str) -> List[Dict]:
         """
-        Create clean sequential chunks WITHOUT overlaps
-        Each chunk is completely independent
+        Create all chunks for one complete 11-minute recording
+        Each chunk ~10 seconds, no overlaps, sequential
         """
-        logger.info("🔄 Creating NO-OVERLAP sequential chunks...")
+        logger.info(f"🔄 Creating chunks for complete recording: {sample_name}")
         
         if len(words) < self.words_per_chunk:
             logger.error(f"❌ Not enough words for chunking: {len(words)} < {self.words_per_chunk}")
             return []
         
-        all_batches = []
+        chunks = []
         current_word_idx = 0
+        chunk_idx = 0
         
         while current_word_idx < len(words):
-            # Create one batch (sequence of clean chunks)
-            batch_chunks = []
-            batch_start_word_idx = current_word_idx
+            chunk_start = current_word_idx
+            chunk_end = current_word_idx + self.words_per_chunk
             
-            # Create chunks_per_batch sequential chunks WITHOUT overlaps
-            for chunk_in_batch in range(self.chunks_per_batch):
-                chunk_start = current_word_idx
-                chunk_end = current_word_idx + self.words_per_chunk
-                
-                # Check if we have enough words
-                if chunk_end > len(words):
-                    if len(batch_chunks) > 0:  # At least one chunk in batch
-                        break
-                    else:
-                        # Not even one full chunk possible
-                        break
-                
-                # Extract chunk words - NO OVERLAP!
-                chunk_words = words[chunk_start:chunk_end]
-                
-                if len(chunk_words) < self.words_per_chunk // 2:  # At least half size
+            # Check if we have enough words
+            if chunk_end > len(words):
+                # Use remaining words if we have at least half a chunk
+                if len(words) - current_word_idx >= self.words_per_chunk // 2:
+                    chunk_end = len(words)
+                else:
                     break
-                
-                # Create chunk metadata
-                chunk_info = {
-                    'words': chunk_words,
-                    'chunk_idx_in_batch': chunk_in_batch,
-                    'global_chunk_idx': len(all_batches) * self.chunks_per_batch + chunk_in_batch,
-                    'start_time': chunk_words[0]['start'],
-                    'end_time': chunk_words[-1]['end'],
-                    'duration': chunk_words[-1]['end'] - chunk_words[0]['start'],
-                    'word_count': len(chunk_words),
-                    'has_overlap': False,  # NO OVERLAPS!
-                    'overlap_words': 0,    # ZERO overlaps!
-                    'clean_chunk': True    # Mark as clean
-                }
-                
-                batch_chunks.append(chunk_info)
-                current_word_idx += self.words_per_chunk  # CLEAN advance - no overlap!
             
-            # Add batch if it has chunks
-            if len(batch_chunks) > 0:
-                batch_info = {
-                    'batch_idx': len(all_batches),
-                    'chunks': batch_chunks,
-                    'total_duration': batch_chunks[-1]['end_time'] - batch_chunks[0]['start_time'],
-                    'total_words': sum(chunk['word_count'] for chunk in batch_chunks),
-                    'start_time': batch_chunks[0]['start_time'],
-                    'end_time': batch_chunks[-1]['end_time'],
-                    'no_overlaps': True,  # Mark batch as clean
-                    'coverage_gap': batch_chunks[1]['start_time'] - batch_chunks[0]['end_time'] if len(batch_chunks) > 1 else 0.0
-                }
-                
-                all_batches.append(batch_info)
-                
-                logger.info(f"   Batch {len(all_batches)}: {len(batch_chunks)} CLEAN chunks, "
-                          f"{batch_info['total_duration']:.1f}s, {batch_info['total_words']} words")
-                
-                # Show gap between chunks (should be small)
-                if len(batch_chunks) > 1:
-                    avg_gap = 0
-                    for i in range(len(batch_chunks) - 1):
-                        gap = batch_chunks[i+1]['start_time'] - batch_chunks[i]['end_time']
-                        avg_gap += gap
-                    avg_gap /= (len(batch_chunks) - 1)
-                    logger.info(f"     Average gap between chunks: {avg_gap:.2f}s")
-            else:
+            # Extract chunk words - NO OVERLAP!
+            chunk_words = words[chunk_start:chunk_end]
+            
+            if len(chunk_words) < 3:  # Need at least 3 words
                 break
+            
+            # Create chunk metadata
+            chunk_info = {
+                'words': chunk_words,
+                'chunk_idx': chunk_idx,
+                'start_time': chunk_words[0]['start'],
+                'end_time': chunk_words[-1]['end'],
+                'duration': chunk_words[-1]['end'] - chunk_words[0]['start'],
+                'word_count': len(chunk_words),
+                'has_overlap': False,  # NO OVERLAPS!
+                'overlap_words': 0,    # ZERO overlaps!
+                'clean_chunk': True,   # Mark as clean
+                'sample_name': sample_name
+            }
+            
+            chunks.append(chunk_info)
+            current_word_idx += len(chunk_words)  # CLEAN advance - no overlap!
+            chunk_idx += 1
         
-        logger.info(f"✅ Created {len(all_batches)} NO-OVERLAP sequential batches")
+        logger.info(f"✅ Created {len(chunks)} CLEAN chunks for {sample_name}")
+        logger.info(f"   Total duration: {chunks[-1]['end_time'] - chunks[0]['start_time']:.1f}s")
+        logger.info(f"   Average chunk duration: {sum(c['duration'] for c in chunks) / len(chunks):.1f}s")
         
-        # Analyze coverage
-        self._analyze_coverage(all_batches)
-        
-        return all_batches
+        return chunks
     
-    def _analyze_coverage(self, batches: List[Dict]):
-        """Analyze how much audio is covered without overlaps"""
-        logger.info("🔍 Analyzing NO-OVERLAP coverage:")
+    def process_single_sample(self, sample_info: Dict) -> Optional[Dict]:
+        """Process one complete sample (audio + transcription)"""
+        sample_name = sample_info['sample_name']
+        batch_idx = sample_info['batch_idx']
+        audio_path = sample_info['audio_path']
+        transcription_path = sample_info['transcription_path']
         
-        total_original_duration = 0
-        total_covered_duration = 0
-        total_gaps = 0
-        gap_durations = []
+        logger.info(f"🎵 Processing {sample_name} → clean_batch_{batch_idx:02d}")
+        logger.info(f"   Audio: {audio_path}")
+        logger.info(f"   Transcription: {transcription_path}")
         
-        for batch in batches:
-            chunks = batch['chunks']
+        try:
+            # Load WhisperX transcription
+            with open(transcription_path, 'r', encoding='utf-8') as f:
+                whisperx_data = json.load(f)
             
-            # Calculate coverage for this batch
-            batch_start = chunks[0]['start_time']
-            batch_end = chunks[-1]['end_time']
-            batch_span = batch_end - batch_start
+            # Extract words
+            words = self.extract_words_from_whisperx(whisperx_data)
+            if len(words) == 0:
+                logger.error(f"❌ No valid words extracted from {sample_name}")
+                return None
             
-            # Calculate actual covered time (sum of chunk durations)
-            covered_time = sum(chunk['duration'] for chunk in chunks)
+            # Load audio
+            logger.info(f"🎵 Loading audio: {audio_path}")
+            wav, sr = torchaudio.load(str(audio_path))
+            wav = convert_audio(wav, sr, target_sr=self.sample_rate, target_channels=1)
             
-            total_original_duration += batch_span
-            total_covered_duration += covered_time
+            audio_duration = wav.shape[-1] / self.sample_rate
+            logger.info(f"   Audio duration: {audio_duration:.1f}s")
             
-            # Calculate gaps between chunks
-            for i in range(len(chunks) - 1):
-                gap = chunks[i+1]['start_time'] - chunks[i]['end_time']
-                if gap > 0:
-                    gap_durations.append(gap)
-                    total_gaps += gap
+            # Create chunks for entire recording
+            chunks = self.create_chunks_for_full_recording(words, sample_name)
+            if len(chunks) == 0:
+                logger.error(f"❌ No chunks created for {sample_name}")
+                return None
             
-            logger.info(f"   Batch {batch['batch_idx']}: {covered_time:.1f}s covered out of {batch_span:.1f}s span ({covered_time/batch_span*100:.1f}%)")
-        
-        # Overall statistics
-        coverage_ratio = total_covered_duration / total_original_duration if total_original_duration > 0 else 0
-        avg_gap = sum(gap_durations) / len(gap_durations) if gap_durations else 0
-        
-        logger.info(f"📊 NO-OVERLAP Coverage Analysis:")
-        logger.info(f"   Total covered: {total_covered_duration:.1f}s out of {total_original_duration:.1f}s ({coverage_ratio*100:.1f}%)")
-        logger.info(f"   Total gaps: {total_gaps:.1f}s")
-        logger.info(f"   Average gap: {avg_gap:.2f}s")
-        logger.info(f"   Number of gaps: {len(gap_durations)}")
-        
-        if avg_gap > 2.0:
-            logger.warning("⚠️  Large gaps detected - consider smaller chunk size")
-        elif avg_gap < 0.5:
-            logger.info("✅ Small gaps - good chunk continuity")
-    
-    def process_batch(self, batch_info: Dict, wav_data: torch.Tensor) -> Optional[Dict]:
-        """Process one NO-OVERLAP batch"""
-        batch_idx = batch_info['batch_idx']
-        chunks = batch_info['chunks']
-        
-        logger.info(f"🎵 Processing NO-OVERLAP batch {batch_idx} ({len(chunks)} chunks)...")
-        
-        processed_chunks = []
-        
-        for chunk_info in chunks:
-            processed_chunk = self._process_single_chunk(chunk_info, wav_data, batch_idx)
+            # Process each chunk
+            processed_chunks = []
             
-            if processed_chunk is not None:
-                processed_chunks.append(processed_chunk)
-            else:
-                logger.warning(f"⚠️  Failed to process chunk {chunk_info['global_chunk_idx']}")
-        
-        if len(processed_chunks) == 0:
-            logger.error(f"❌ No chunks processed in batch {batch_idx}")
+            for chunk_info in chunks:
+                processed_chunk = self._process_single_chunk(chunk_info, wav, batch_idx)
+                
+                if processed_chunk is not None:
+                    processed_chunks.append(processed_chunk)
+                else:
+                    logger.warning(f"⚠️  Failed to process chunk {chunk_info['chunk_idx']} in {sample_name}")
+            
+            if len(processed_chunks) == 0:
+                logger.error(f"❌ No chunks processed for {sample_name}")
+                return None
+            
+            # Create batch data (one batch = one complete recording)
+            batch_data = {
+                'batch_idx': batch_idx,
+                'sample_name': sample_name,
+                'chunks': processed_chunks,
+                'num_chunks': len(processed_chunks),
+                'total_duration': chunks[-1]['end_time'] - chunks[0]['start_time'],
+                'total_words': sum(chunk['word_count'] for chunk in chunks),
+                'audio_duration': audio_duration,
+                'no_overlaps': True,           # Mark as clean
+                'sequential': True,            # Sequential chunks
+                'clean_boundaries': True,      # Clean chunk boundaries
+                'source_audio': str(audio_path),
+                'source_transcription': str(transcription_path)
+            }
+            
+            logger.info(f"✅ Processed {sample_name}: {len(processed_chunks)} chunks, {batch_data['total_duration']:.1f}s")
+            
+            return batch_data
+            
+        except Exception as e:
+            logger.error(f"❌ Failed to process {sample_name}: {e}")
+            import traceback
+            traceback.print_exc()
             return None
-        
-        # Create batch-level metadata
-        batch_data = {
-            'batch_idx': batch_idx,
-            'chunks': processed_chunks,
-            'num_chunks': len(processed_chunks),
-            'total_duration': batch_info['total_duration'],
-            'total_words': batch_info['total_words'],
-            'no_overlaps': True,           # Mark as clean
-            'sequential': True,            # Still sequential
-            'clean_boundaries': True       # Clean chunk boundaries
-        }
-        
-        return batch_data
     
     def _process_single_chunk(self, chunk_info: Dict, wav_data: torch.Tensor, batch_idx: int) -> Optional[Dict]:
         """Process single clean chunk"""
@@ -354,10 +360,10 @@ class NoOverlapAudioPreprocessor:
                 'duration': end_time - start_time,
                 
                 # Metadata
-                'chunk_idx_in_batch': chunk_info['chunk_idx_in_batch'],
-                'global_chunk_idx': chunk_info['global_chunk_idx'],
+                'chunk_idx': chunk_info['chunk_idx'],
                 'batch_idx': batch_idx,
                 'word_count': len(words),
+                'sample_name': chunk_info['sample_name'],
                 
                 # NO-OVERLAP specific
                 'has_overlap': False,         # NO overlaps!
@@ -381,12 +387,13 @@ class NoOverlapAudioPreprocessor:
         """Save processed NO-OVERLAP batch to disk"""
         try:
             batch_idx = batch_data['batch_idx']
-            batch_dir = self.output_dir / f"clean_batch_{batch_idx:02d}"  # Mark as clean
+            sample_name = batch_data['sample_name']
+            batch_dir = self.output_dir / f"clean_batch_{batch_idx:02d}"  # clean_batch_00, clean_batch_01, etc.
             batch_dir.mkdir(parents=True, exist_ok=True)
             
             # Save each chunk individually
             for chunk in batch_data['chunks']:
-                chunk_filename = f"chunk_{chunk['chunk_idx_in_batch']:02d}_{chunk['start_time']:.1f}-{chunk['end_time']:.1f}s.pt"
+                chunk_filename = f"chunk_{chunk['chunk_idx']:02d}_{chunk['start_time']:.1f}-{chunk['end_time']:.1f}s.pt"
                 chunk_path = batch_dir / chunk_filename
                 
                 torch.save(chunk, chunk_path)
@@ -394,13 +401,17 @@ class NoOverlapAudioPreprocessor:
             # Save batch metadata
             batch_meta = {
                 'batch_idx': batch_idx,
+                'sample_name': sample_name,
                 'num_chunks': batch_data['num_chunks'],
                 'total_duration': batch_data['total_duration'],
                 'total_words': batch_data['total_words'],
+                'audio_duration': batch_data['audio_duration'],
                 'no_overlaps': batch_data['no_overlaps'],
                 'sequential': batch_data['sequential'],
                 'clean_boundaries': batch_data['clean_boundaries'],
-                'chunk_files': [f"chunk_{chunk['chunk_idx_in_batch']:02d}_{chunk['start_time']:.1f}-{chunk['end_time']:.1f}s.pt" 
+                'source_audio': batch_data['source_audio'],
+                'source_transcription': batch_data['source_transcription'],
+                'chunk_files': [f"chunk_{chunk['chunk_idx']:02d}_{chunk['start_time']:.1f}-{chunk['end_time']:.1f}s.pt" 
                                for chunk in batch_data['chunks']]
             }
             
@@ -408,50 +419,37 @@ class NoOverlapAudioPreprocessor:
             with open(meta_path, 'w', encoding='utf-8') as f:
                 json.dump(batch_meta, f, indent=2, ensure_ascii=False)
             
-            logger.info(f"💾 NO-OVERLAP Batch {batch_idx} saved: {batch_data['num_chunks']} chunks, {batch_data['total_duration']:.1f}s")
+            logger.info(f"💾 Batch {batch_idx} ({sample_name}) saved: {batch_data['num_chunks']} chunks, {batch_data['total_duration']:.1f}s")
             return True
             
         except Exception as e:
             logger.error(f"❌ Failed to save batch {batch_data['batch_idx']}: {e}")
             return False
     
-    def process_full_audio(self, audio_path: str, whisperx_json_path: str) -> Dict:
-        """Main processing function - creates NO-OVERLAP sequential batches"""
-        logger.info("🚀 NO-OVERLAP AUDIO PREPROCESSING")
-        logger.info("=" * 60)
+    def process_all_samples(self) -> Dict:
+        """Main processing function - process all 6 samples"""
+        logger.info("🚀 BATCH NO-OVERLAP AUDIO PREPROCESSING")
+        logger.info("=" * 70)
+        logger.info("Processing all samples from whisper_transcription folder")
+        logger.info("Each sample becomes one clean_batch with ~66 chunks")
+        logger.info("=" * 70)
         
-        # Load WhisperX data
-        logger.info(f"📋 Loading WhisperX data: {whisperx_json_path}")
-        with open(whisperx_json_path, 'r', encoding='utf-8') as f:
-            whisperx_data = json.load(f)
+        # Find all sample files
+        samples = self.find_sample_files()
+        if len(samples) == 0:
+            logger.error("❌ No sample files found")
+            return {'success': False, 'error': 'No sample files found'}
         
-        # Extract words
-        words = self.extract_words_from_whisperx(whisperx_data)
-        if len(words) == 0:
-            logger.error("❌ No valid words extracted")
-            return {'success': False, 'error': 'No valid words'}
-        
-        # Load audio
-        logger.info(f"🎵 Loading audio: {audio_path}")
-        wav, sr = torchaudio.load(audio_path)
-        wav = convert_audio(wav, sr, target_sr=self.sample_rate, target_channels=1)
-        
-        audio_duration = wav.shape[-1] / self.sample_rate
-        logger.info(f"   Audio duration: {audio_duration:.1f}s")
-        
-        # Create NO-OVERLAP chunks
-        batches = self.create_no_overlap_chunks(words)
-        if len(batches) == 0:
-            logger.error("❌ No batches created")
-            return {'success': False, 'error': 'No batches created'}
-        
-        # Process each batch
+        # Create output directory
         self.output_dir.mkdir(exist_ok=True)
+        
+        # Process each sample
         processed_batches = []
         failed_batches = 0
         
-        for batch_info in batches:
-            batch_data = self.process_batch(batch_info, wav)
+        for sample_info in samples:
+            logger.info(f"\n{'='*50}")
+            batch_data = self.process_single_sample(sample_info)
             
             if batch_data is not None:
                 if self.save_batch(batch_data):
@@ -465,16 +463,23 @@ class NoOverlapAudioPreprocessor:
         total_chunks = sum(batch['num_chunks'] for batch in processed_batches)
         total_duration = sum(batch['total_duration'] for batch in processed_batches)
         
-        logger.info("\n" + "="*60)
-        logger.info("🎉 NO-OVERLAP PREPROCESSING COMPLETE!")
-        logger.info("="*60)
+        logger.info("\n" + "="*70)
+        logger.info("🎉 BATCH NO-OVERLAP PREPROCESSING COMPLETE!")
+        logger.info("="*70)
         logger.info(f"📊 Results:")
-        logger.info(f"   Successful batches: {len(processed_batches)}")
-        logger.info(f"   Failed batches: {failed_batches}")
+        logger.info(f"   Processed samples: {len(processed_batches)}")
+        logger.info(f"   Failed samples: {failed_batches}")
         logger.info(f"   Total chunks: {total_chunks}")
-        logger.info(f"   Total duration: {total_duration:.1f}s")
+        logger.info(f"   Total duration: {total_duration:.1f}s ({total_duration/60:.1f} minutes)")
+        logger.info(f"   Average chunks per sample: {total_chunks/len(processed_batches):.1f}")
         logger.info(f"   NO OVERLAPS: ✅ Clean sequential chunks")
         logger.info(f"   Clean boundaries: ✅ Let Mamba learn transitions")
+        logger.info(f"   Output directory: {self.output_dir}")
+        
+        # Show batch structure
+        logger.info(f"\n📁 Created batch structure:")
+        for batch in processed_batches:
+            logger.info(f"   clean_batch_{batch['batch_idx']:02d}/ - {batch['sample_name']} - {batch['num_chunks']} chunks")
         
         return {
             'success': True,
@@ -482,46 +487,63 @@ class NoOverlapAudioPreprocessor:
             'failed_batches': failed_batches,
             'total_chunks': total_chunks,
             'total_duration': total_duration,
+            'average_chunks_per_sample': total_chunks / len(processed_batches) if processed_batches else 0,
             'output_dir': str(self.output_dir),
             'no_overlaps': True,
-            'clean_boundaries': True
+            'clean_boundaries': True,
+            'batch_details': [
+                {
+                    'batch_idx': batch['batch_idx'],
+                    'sample_name': batch['sample_name'],
+                    'num_chunks': batch['num_chunks'],
+                    'duration': batch['total_duration']
+                }
+                for batch in processed_batches
+            ]
         }
 
 
 def main():
     """Main function for standalone usage"""
-    audio_path = "speech.mp3"
-    json_path = "speech_transcription.json"
+    input_dir = "whisper_transcription"
     
-    if not Path(audio_path).exists():
-        logger.error(f"❌ Audio file not found: {audio_path}")
-        return
-    
-    if not Path(json_path).exists():
-        logger.error(f"❌ JSON file not found: {json_path}")
+    if not Path(input_dir).exists():
+        logger.error(f"❌ Input directory not found: {input_dir}")
+        logger.info("Expected structure:")
+        logger.info("whisper_transcription/")
+        logger.info("├── processed_audio/")
+        logger.info("│   ├── sample1.wav")
+        logger.info("│   ├── sample2.wav")
+        logger.info("│   └── ... sample6.wav")
+        logger.info("└── transcriptions/")
+        logger.info("    ├── sample1_transcription.json")
+        logger.info("    ├── sample2_transcription.json")
+        logger.info("    └── ... sample6_transcription.json")
         return
     
     try:
-        # Create NO-OVERLAP preprocessor
-        preprocessor = NoOverlapAudioPreprocessor(
-            words_per_chunk=15,          # Slightly larger since no overlap waste
-            chunks_per_batch=4,          # Sequential chunks per batch
-            max_batches=20,              # Max batches
-            output_dir="no_overlap_data" # Clean output directory
+        # Create batch preprocessor
+        preprocessor = BatchNoOverlapAudioPreprocessor(
+            words_per_chunk=15,                    # ~10 seconds per chunk
+            input_dir="whisper_transcription",     # Input folder with processed samples
+            output_dir="no_overlap_data"           # Output folder with clean batches
         )
         
-        # Process audio
-        results = preprocessor.process_full_audio(audio_path, json_path)
+        # Process all samples
+        results = preprocessor.process_all_samples()
         
         if results['success']:
             logger.info("🚀 Ready for NO-OVERLAP sequential training!")
-            logger.info("📁 Output directory: no_overlap_data/")
-            logger.info("🎯 Features: Clean chunks, no masking needed, let Mamba learn!")
+            logger.info("📁 Data structure created:")
+            logger.info("   6 samples → 6 clean_batches")
+            logger.info("   ~396 total chunks (~66 per batch)")
+            logger.info("   NO overlaps, clean boundaries")
+            logger.info("   Perfect for Mamba sequential learning!")
         else:
             logger.error(f"❌ Processing failed: {results.get('error', 'Unknown error')}")
     
     except Exception as e:
-        logger.error(f"❌ Preprocessing failed: {e}")
+        logger.error(f"❌ Batch preprocessing failed: {e}")
         import traceback
         traceback.print_exc()
 

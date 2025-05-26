@@ -1,0 +1,23 @@
+# systemowe
+.DS_Store
+Thumbs.db
+
+# katalogi z danymi i logami
+/no_overlap_data/
+/precomputed/
+*.log
+
+# środowiska Pythona
+__pycache__/
+*.py[cod]
+venv/
+env/
+
+# pliki tymczasowe
+*.tmp
+*.swp
+
+
+# katalogi z surowymi danymi i transkrypcjami
+/raw_data/
+/whisper_transcription/
