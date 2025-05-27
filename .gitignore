@@ -3,7 +3,7 @@
 Thumbs.db
 
 # katalogi z danymi i logami
-/no_overlap_data/
+# /no_overlap_data/
 /precomputed/
 *.log
 
