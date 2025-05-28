@@ -1,0 +1,1316 @@
+{
+  "num_samples": 10,
+  "successful_generations": 10,
+  "failed_generations": 0,
+  "comparisons": [
+    {
+      "text": "pozwala uciec od zmurszałego, parszywego, zgniłego pieniądza jakim jest euro i innych gnijących walut europejskich.",
+      "original_shape": [
+        8,
+        628
+      ],
+      "generated_shape": [
+        8,
+        369
+      ],
+      "original_duration": 8.373333333333333,
+      "generated_duration": 4.92,
+      "chunk_duration": 8.368999999999971,
+      "original_stats": {
+        "codebook_0": {
+          "min": 3,
+          "max": 1019,
+          "mean": 546.2515869140625,
+          "unique": 250
+        },
+        "codebook_1": {
+          "min": 0,
+          "max": 1023,
+          "mean": 579.7293090820312,
+          "unique": 333
+        },
+        "codebook_2": {
+          "min": 5,
+          "max": 1023,
+          "mean": 587.5286865234375,
+          "unique": 356
+        },
+        "codebook_3": {
+          "min": 2,
+          "max": 1022,
+          "mean": 556.7054443359375,
+          "unique": 361
+        },
+        "codebook_4": {
+          "min": 0,
+          "max": 1022,
+          "mean": 540.2595825195312,
+          "unique": 371
+        },
+        "codebook_5": {
+          "min": 0,
+          "max": 1022,
+          "mean": 546.222900390625,
+          "unique": 380
+        },
+        "codebook_6": {
+          "min": 0,
+          "max": 1020,
+          "mean": 561.5,
+          "unique": 387
+        },
+        "codebook_7": {
+          "min": 6,
+          "max": 1021,
+          "mean": 557.2706909179688,
+          "unique": 377
+        }
+      },
+      "generated_stats": {
+        "codebook_0": {
+          "min": 3,
+          "max": 1023,
+          "mean": 495.135498046875,
+          "unique": 143
+        },
+        "codebook_1": {
+          "min": 4,
+          "max": 1015,
+          "mean": 479.43359375,
+          "unique": 123
+        },
+        "codebook_2": {
+          "min": 1,
+          "max": 1005,
+          "mean": 517.7642211914062,
+          "unique": 134
+        },
+        "codebook_3": {
+          "min": 2,
+          "max": 1022,
+          "mean": 477.6341552734375,
+          "unique": 131
+        },
+        "codebook_4": {
+          "min": 16,
+          "max": 1019,
+          "mean": 536.6666870117188,
+          "unique": 124
+        },
+        "codebook_5": {
+          "min": 8,
+          "max": 1020,
+          "mean": 538.4471435546875,
+          "unique": 123
+        },
+        "codebook_6": {
+          "min": 10,
+          "max": 1023,
+          "mean": 655.349609375,
+          "unique": 126
+        },
+        "codebook_7": {
+          "min": 12,
+          "max": 1022,
+          "mean": 549.1273803710938,
+          "unique": 138
+        }
+      },
+      "exact_match_rate": 0.0010162601247429848,
+      "distribution_similarity": {
+        "per_codebook": [
+          0.11889957636594772,
+          0.10308890044689178,
+          0.1202789768576622,
+          0.07413826137781143,
+          0.1805923879146576,
+          0.1572878062725067,
+          0.09132371842861176,
+          0.10362301766872406
+        ],
+        "average": 0.11865408066660166
+      }
+    },
+    {
+      "text": "Ja go specjalnie pokazałem całego, żeby mi nie zarzucono, że tam były jakieś cięcia i",
+      "original_shape": [
+        8,
+        382
+      ],
+      "generated_shape": [
+        8,
+        310
+      ],
+      "original_duration": 5.093333333333334,
+      "generated_duration": 4.133333333333334,
+      "chunk_duration": 5.081999999999994,
+      "original_stats": {
+        "codebook_0": {
+          "min": 15,
+          "max": 1022,
+          "mean": 571.97119140625,
+          "unique": 204
+        },
+        "codebook_1": {
+          "min": 4,
+          "max": 1023,
+          "mean": 567.8507690429688,
+          "unique": 223
+        },
+        "codebook_2": {
+          "min": 1,
+          "max": 1022,
+          "mean": 572.8429565429688,
+          "unique": 248
+        },
+        "codebook_3": {
+          "min": 17,
+          "max": 1022,
+          "mean": 562.5052490234375,
+          "unique": 249
+        },
+        "codebook_4": {
+          "min": 0,
+          "max": 1022,
+          "mean": 537.9371948242188,
+          "unique": 248
+        },
+        "codebook_5": {
+          "min": 0,
+          "max": 1017,
+          "mean": 530.9502563476562,
+          "unique": 262
+        },
+        "codebook_6": {
+          "min": 15,
+          "max": 1022,
+          "mean": 574.4214477539062,
+          "unique": 284
+        },
+        "codebook_7": {
+          "min": 0,
+          "max": 1023,
+          "mean": 576.6021118164062,
+          "unique": 275
+        }
+      },
+      "generated_stats": {
+        "codebook_0": {
+          "min": 5,
+          "max": 1019,
+          "mean": 505.1645202636719,
+          "unique": 125
+        },
+        "codebook_1": {
+          "min": 4,
+          "max": 1015,
+          "mean": 494.2742004394531,
+          "unique": 118
+        },
+        "codebook_2": {
+          "min": 4,
+          "max": 980,
+          "mean": 522.9645385742188,
+          "unique": 104
+        },
+        "codebook_3": {
+          "min": 3,
+          "max": 1022,
+          "mean": 456.8612976074219,
+          "unique": 116
+        },
+        "codebook_4": {
+          "min": 5,
+          "max": 1019,
+          "mean": 518.4129028320312,
+          "unique": 113
+        },
+        "codebook_5": {
+          "min": 16,
+          "max": 1020,
+          "mean": 546.1096801757812,
+          "unique": 111
+        },
+        "codebook_6": {
+          "min": 27,
+          "max": 1023,
+          "mean": 666.619384765625,
+          "unique": 109
+        },
+        "codebook_7": {
+          "min": 6,
+          "max": 1015,
+          "mean": 574.12255859375,
+          "unique": 120
+        }
+      },
+      "exact_match_rate": 0.001612903201021254,
+      "distribution_similarity": {
+        "per_codebook": [
+          0.10893404483795166,
+          0.06984077394008636,
+          0.09211607277393341,
+          0.10409566760063171,
+          0.2270415723323822,
+          0.1019207164645195,
+          0.15293966233730316,
+          0.1723480522632599
+        ],
+        "average": 0.1286545703187585
+      }
+    },
+    {
+      "text": "że chcieli reklamy, to jeszcze za darmo. Więc stawiam publicznie pytanie. Ile razy sztab Trzaskowskiego",
+      "original_shape": [
+        8,
+        487
+      ],
+      "generated_shape": [
+        8,
+        342
+      ],
+      "original_duration": 6.493333333333333,
+      "generated_duration": 4.56,
+      "chunk_duration": 6.485000000000014,
+      "original_stats": {
+        "codebook_0": {
+          "min": 11,
+          "max": 1023,
+          "mean": 579.7084350585938,
+          "unique": 205
+        },
+        "codebook_1": {
+          "min": 2,
+          "max": 1023,
+          "mean": 611.954833984375,
+          "unique": 228
+        },
+        "codebook_2": {
+          "min": 4,
+          "max": 1022,
+          "mean": 642.7966918945312,
+          "unique": 253
+        },
+        "codebook_3": {
+          "min": 0,
+          "max": 1023,
+          "mean": 607.4209594726562,
+          "unique": 264
+        },
+        "codebook_4": {
+          "min": 5,
+          "max": 1023,
+          "mean": 543.5010375976562,
+          "unique": 278
+        },
+        "codebook_5": {
+          "min": 2,
+          "max": 1018,
+          "mean": 529.1929931640625,
+          "unique": 289
+        },
+        "codebook_6": {
+          "min": 0,
+          "max": 1019,
+          "mean": 592.5421142578125,
+          "unique": 279
+        },
+        "codebook_7": {
+          "min": 2,
+          "max": 1019,
+          "mean": 559.195068359375,
+          "unique": 284
+        }
+      },
+      "generated_stats": {
+        "codebook_0": {
+          "min": 0,
+          "max": 1018,
+          "mean": 493.9590759277344,
+          "unique": 136
+        },
+        "codebook_1": {
+          "min": 4,
+          "max": 1011,
+          "mean": 498.28656005859375,
+          "unique": 121
+        },
+        "codebook_2": {
+          "min": 1,
+          "max": 1002,
+          "mean": 514.865478515625,
+          "unique": 124
+        },
+        "codebook_3": {
+          "min": 2,
+          "max": 1022,
+          "mean": 484.4327392578125,
+          "unique": 130
+        },
+        "codebook_4": {
+          "min": 29,
+          "max": 1019,
+          "mean": 514.4064331054688,
+          "unique": 107
+        },
+        "codebook_5": {
+          "min": 8,
+          "max": 1020,
+          "mean": 551.0847778320312,
+          "unique": 121
+        },
+        "codebook_6": {
+          "min": 10,
+          "max": 1017,
+          "mean": 658.1637573242188,
+          "unique": 119
+        },
+        "codebook_7": {
+          "min": 12,
+          "max": 1023,
+          "mean": 584.3157958984375,
+          "unique": 114
+        }
+      },
+      "exact_match_rate": 0.0025584795512259007,
+      "distribution_similarity": {
+        "per_codebook": [
+          0.1036689504981041,
+          0.03731226176023483,
+          0.05912454053759575,
+          0.10335685312747955,
+          0.1222611516714096,
+          0.04303646460175514,
+          0.06560667604207993,
+          0.05761516094207764
+        ],
+        "average": 0.07399775739759207
+      }
+    },
+    {
+      "text": "bym nie szalał. Wiele zależy od osoby, a także materiału oglądanego na ekranie. Na przykład",
+      "original_shape": [
+        8,
+        361
+      ],
+      "generated_shape": [
+        8,
+        314
+      ],
+      "original_duration": 4.8133333333333335,
+      "generated_duration": 4.1866666666666665,
+      "chunk_duration": 4.802999999999997,
+      "original_stats": {
+        "codebook_0": {
+          "min": 3,
+          "max": 1022,
+          "mean": 581.360107421875,
+          "unique": 200
+        },
+        "codebook_1": {
+          "min": 2,
+          "max": 1023,
+          "mean": 537.2493286132812,
+          "unique": 239
+        },
+        "codebook_2": {
+          "min": 4,
+          "max": 1019,
+          "mean": 543.728515625,
+          "unique": 234
+        },
+        "codebook_3": {
+          "min": 2,
+          "max": 1022,
+          "mean": 550.8615112304688,
+          "unique": 263
+        },
+        "codebook_4": {
+          "min": 3,
+          "max": 1022,
+          "mean": 530.7617797851562,
+          "unique": 264
+        },
+        "codebook_5": {
+          "min": 4,
+          "max": 1022,
+          "mean": 526.8753662109375,
+          "unique": 274
+        },
+        "codebook_6": {
+          "min": 13,
+          "max": 1020,
+          "mean": 524.063720703125,
+          "unique": 264
+        },
+        "codebook_7": {
+          "min": 6,
+          "max": 1022,
+          "mean": 571.7728271484375,
+          "unique": 269
+        }
+      },
+      "generated_stats": {
+        "codebook_0": {
+          "min": 1,
+          "max": 1004,
+          "mean": 491.5414123535156,
+          "unique": 123
+        },
+        "codebook_1": {
+          "min": 4,
+          "max": 1015,
+          "mean": 507.9522399902344,
+          "unique": 114
+        },
+        "codebook_2": {
+          "min": 4,
+          "max": 1013,
+          "mean": 513.4395141601562,
+          "unique": 120
+        },
+        "codebook_3": {
+          "min": 3,
+          "max": 1014,
+          "mean": 470.3312072753906,
+          "unique": 116
+        },
+        "codebook_4": {
+          "min": 29,
+          "max": 1019,
+          "mean": 535.9617919921875,
+          "unique": 112
+        },
+        "codebook_5": {
+          "min": 12,
+          "max": 1020,
+          "mean": 535.4267578125,
+          "unique": 105
+        },
+        "codebook_6": {
+          "min": 10,
+          "max": 1017,
+          "mean": 678.9808959960938,
+          "unique": 104
+        },
+        "codebook_7": {
+          "min": 14,
+          "max": 1021,
+          "mean": 573.3439331054688,
+          "unique": 110
+        }
+      },
+      "exact_match_rate": 0.0015923567116260529,
+      "distribution_similarity": {
+        "per_codebook": [
+          0.12153667956590652,
+          0.12339821457862854,
+          0.16615155339241028,
+          0.0941925123333931,
+          0.16463786363601685,
+          0.08445952832698822,
+          0.034527406096458435,
+          0.11261298507452011
+        ],
+        "average": 0.11268959287554026
+      }
+    },
+    {
+      "text": "nielegalną migracją. A ja pytam, a co z legalną? Bo to legalna migracja jest najbardziej",
+      "original_shape": [
+        8,
+        819
+      ],
+      "generated_shape": [
+        8,
+        311
+      ],
+      "original_duration": 10.92,
+      "generated_duration": 4.1466666666666665,
+      "chunk_duration": 10.908000000000015,
+      "original_stats": {
+        "codebook_0": {
+          "min": 6,
+          "max": 1019,
+          "mean": 500.8449401855469,
+          "unique": 277
+        },
+        "codebook_1": {
+          "min": 1,
+          "max": 1022,
+          "mean": 539.3699340820312,
+          "unique": 325
+        },
+        "codebook_2": {
+          "min": 1,
+          "max": 1022,
+          "mean": 601.103759765625,
+          "unique": 340
+        },
+        "codebook_3": {
+          "min": 1,
+          "max": 1022,
+          "mean": 601.7997436523438,
+          "unique": 357
+        },
+        "codebook_4": {
+          "min": 3,
+          "max": 1018,
+          "mean": 563.8021850585938,
+          "unique": 358
+        },
+        "codebook_5": {
+          "min": 2,
+          "max": 1022,
+          "mean": 599.4139404296875,
+          "unique": 341
+        },
+        "codebook_6": {
+          "min": 3,
+          "max": 1023,
+          "mean": 665.2258911132812,
+          "unique": 355
+        },
+        "codebook_7": {
+          "min": 6,
+          "max": 1022,
+          "mean": 625.5701904296875,
+          "unique": 361
+        }
+      },
+      "generated_stats": {
+        "codebook_0": {
+          "min": 3,
+          "max": 1023,
+          "mean": 518.03857421875,
+          "unique": 123
+        },
+        "codebook_1": {
+          "min": 9,
+          "max": 1011,
+          "mean": 493.0032043457031,
+          "unique": 111
+        },
+        "codebook_2": {
+          "min": 26,
+          "max": 1002,
+          "mean": 525.3151245117188,
+          "unique": 118
+        },
+        "codebook_3": {
+          "min": 2,
+          "max": 1014,
+          "mean": 466.0835876464844,
+          "unique": 114
+        },
+        "codebook_4": {
+          "min": 5,
+          "max": 1019,
+          "mean": 502.34405517578125,
+          "unique": 121
+        },
+        "codebook_5": {
+          "min": 16,
+          "max": 1020,
+          "mean": 578.7202758789062,
+          "unique": 114
+        },
+        "codebook_6": {
+          "min": 16,
+          "max": 1023,
+          "mean": 636.7813720703125,
+          "unique": 112
+        },
+        "codebook_7": {
+          "min": 14,
+          "max": 1022,
+          "mean": 569.282958984375,
+          "unique": 111
+        }
+      },
+      "exact_match_rate": 0.0,
+      "distribution_similarity": {
+        "per_codebook": [
+          0.09793612360954285,
+          0.0248111542314291,
+          0.02355869673192501,
+          0.02114153653383255,
+          0.013361949473619461,
+          0.012623254209756851,
+          0.013949460349977016,
+          0.02119893580675125
+        ],
+        "average": 0.02857263886835426
+      }
+    },
+    {
+      "text": "z innymi instytucjami finansowymi, które by nam te akcje pożyczyły, tylko jakby to pośrednictwo tutaj",
+      "original_shape": [
+        8,
+        436
+      ],
+      "generated_shape": [
+        8,
+        363
+      ],
+      "original_duration": 5.8133333333333335,
+      "generated_duration": 4.84,
+      "chunk_duration": 5.802999999999997,
+      "original_stats": {
+        "codebook_0": {
+          "min": 18,
+          "max": 1023,
+          "mean": 543.07568359375,
+          "unique": 206
+        },
+        "codebook_1": {
+          "min": 4,
+          "max": 1023,
+          "mean": 560.0802612304688,
+          "unique": 242
+        },
+        "codebook_2": {
+          "min": 0,
+          "max": 1022,
+          "mean": 603.7247924804688,
+          "unique": 254
+        },
+        "codebook_3": {
+          "min": 10,
+          "max": 1022,
+          "mean": 562.5825805664062,
+          "unique": 255
+        },
+        "codebook_4": {
+          "min": 3,
+          "max": 1022,
+          "mean": 531.3807373046875,
+          "unique": 283
+        },
+        "codebook_5": {
+          "min": 10,
+          "max": 1022,
+          "mean": 528.6903686523438,
+          "unique": 285
+        },
+        "codebook_6": {
+          "min": 0,
+          "max": 1023,
+          "mean": 559.1307373046875,
+          "unique": 286
+        },
+        "codebook_7": {
+          "min": 6,
+          "max": 1019,
+          "mean": 561.9518432617188,
+          "unique": 291
+        }
+      },
+      "generated_stats": {
+        "codebook_0": {
+          "min": 2,
+          "max": 1019,
+          "mean": 480.0964050292969,
+          "unique": 138
+        },
+        "codebook_1": {
+          "min": 22,
+          "max": 1015,
+          "mean": 501.39117431640625,
+          "unique": 132
+        },
+        "codebook_2": {
+          "min": 4,
+          "max": 980,
+          "mean": 515.9228515625,
+          "unique": 131
+        },
+        "codebook_3": {
+          "min": 2,
+          "max": 1022,
+          "mean": 474.6859436035156,
+          "unique": 131
+        },
+        "codebook_4": {
+          "min": 5,
+          "max": 1019,
+          "mean": 530.8236694335938,
+          "unique": 123
+        },
+        "codebook_5": {
+          "min": 8,
+          "max": 1020,
+          "mean": 536.8043823242188,
+          "unique": 125
+        },
+        "codebook_6": {
+          "min": 10,
+          "max": 1023,
+          "mean": 648.2947387695312,
+          "unique": 125
+        },
+        "codebook_7": {
+          "min": 12,
+          "max": 1015,
+          "mean": 578.272705078125,
+          "unique": 117
+        }
+      },
+      "exact_match_rate": 0.002754820976406336,
+      "distribution_similarity": {
+        "per_codebook": [
+          0.24044103920459747,
+          0.13095948100090027,
+          0.08208473026752472,
+          0.1255923956632614,
+          0.15023690462112427,
+          0.14993268251419067,
+          0.0801343321800232,
+          0.1069529801607132
+        ],
+        "average": 0.1332918182015419
+      }
+    },
+    {
+      "text": "filmów z 2D do 3D, dobrze żeby materiał źródłowy miał wysoką rozdzielczość. Przyznam, że najlepsze",
+      "original_shape": [
+        8,
+        382
+      ],
+      "generated_shape": [
+        8,
+        329
+      ],
+      "original_duration": 5.093333333333334,
+      "generated_duration": 4.386666666666667,
+      "chunk_duration": 5.085000000000036,
+      "original_stats": {
+        "codebook_0": {
+          "min": 3,
+          "max": 1022,
+          "mean": 551.9031372070312,
+          "unique": 206
+        },
+        "codebook_1": {
+          "min": 12,
+          "max": 1023,
+          "mean": 554.5314331054688,
+          "unique": 259
+        },
+        "codebook_2": {
+          "min": 4,
+          "max": 1022,
+          "mean": 551.489501953125,
+          "unique": 242
+        },
+        "codebook_3": {
+          "min": 2,
+          "max": 1019,
+          "mean": 539.7041625976562,
+          "unique": 262
+        },
+        "codebook_4": {
+          "min": 5,
+          "max": 1010,
+          "mean": 504.7696228027344,
+          "unique": 269
+        },
+        "codebook_5": {
+          "min": 2,
+          "max": 1022,
+          "mean": 550.2277221679688,
+          "unique": 273
+        },
+        "codebook_6": {
+          "min": 5,
+          "max": 1020,
+          "mean": 541.7329711914062,
+          "unique": 277
+        },
+        "codebook_7": {
+          "min": 0,
+          "max": 1020,
+          "mean": 541.0654296875,
+          "unique": 279
+        }
+      },
+      "generated_stats": {
+        "codebook_0": {
+          "min": 5,
+          "max": 1019,
+          "mean": 497.76898193359375,
+          "unique": 120
+        },
+        "codebook_1": {
+          "min": 12,
+          "max": 1011,
+          "mean": 484.5805358886719,
+          "unique": 113
+        },
+        "codebook_2": {
+          "min": 4,
+          "max": 1002,
+          "mean": 520.723388671875,
+          "unique": 128
+        },
+        "codebook_3": {
+          "min": 2,
+          "max": 1022,
+          "mean": 486.8085021972656,
+          "unique": 124
+        },
+        "codebook_4": {
+          "min": 5,
+          "max": 1019,
+          "mean": 521.431640625,
+          "unique": 120
+        },
+        "codebook_5": {
+          "min": 8,
+          "max": 1020,
+          "mean": 546.17626953125,
+          "unique": 117
+        },
+        "codebook_6": {
+          "min": 10,
+          "max": 1008,
+          "mean": 666.8905639648438,
+          "unique": 105
+        },
+        "codebook_7": {
+          "min": 6,
+          "max": 1020,
+          "mean": 555.4224853515625,
+          "unique": 121
+        }
+      },
+      "exact_match_rate": 0.0018996960716322064,
+      "distribution_similarity": {
+        "per_codebook": [
+          0.10272150486707687,
+          0.11164381355047226,
+          0.13228201866149902,
+          0.10755438357591629,
+          0.21398428082466125,
+          0.10233025997877121,
+          0.07153009623289108,
+          0.18982699513435364
+        ],
+        "average": 0.1289841691032052
+      }
+    },
+    {
+      "text": "jesteśmy właścicielami akcji w momencie zawierania transakcji, tylko decydujemy się za pomocą umowy na pożyczenie",
+      "original_shape": [
+        8,
+        479
+      ],
+      "generated_shape": [
+        8,
+        399
+      ],
+      "original_duration": 6.386666666666667,
+      "generated_duration": 5.32,
+      "chunk_duration": 6.382000000000005,
+      "original_stats": {
+        "codebook_0": {
+          "min": 20,
+          "max": 1019,
+          "mean": 569.5010375976562,
+          "unique": 223
+        },
+        "codebook_1": {
+          "min": 4,
+          "max": 1023,
+          "mean": 558.6450805664062,
+          "unique": 262
+        },
+        "codebook_2": {
+          "min": 4,
+          "max": 1022,
+          "mean": 571.7515869140625,
+          "unique": 296
+        },
+        "codebook_3": {
+          "min": 2,
+          "max": 1019,
+          "mean": 546.1231689453125,
+          "unique": 306
+        },
+        "codebook_4": {
+          "min": 9,
+          "max": 1022,
+          "mean": 555.0709838867188,
+          "unique": 299
+        },
+        "codebook_5": {
+          "min": 10,
+          "max": 1022,
+          "mean": 517.4843139648438,
+          "unique": 321
+        },
+        "codebook_6": {
+          "min": 0,
+          "max": 1022,
+          "mean": 564.8684692382812,
+          "unique": 328
+        },
+        "codebook_7": {
+          "min": 0,
+          "max": 1023,
+          "mean": 565.4363403320312,
+          "unique": 314
+        }
+      },
+      "generated_stats": {
+        "codebook_0": {
+          "min": 1,
+          "max": 1019,
+          "mean": 506.9949951171875,
+          "unique": 132
+        },
+        "codebook_1": {
+          "min": 4,
+          "max": 996,
+          "mean": 467.4937438964844,
+          "unique": 128
+        },
+        "codebook_2": {
+          "min": 15,
+          "max": 1013,
+          "mean": 517.54638671875,
+          "unique": 132
+        },
+        "codebook_3": {
+          "min": 2,
+          "max": 1022,
+          "mean": 483.197998046875,
+          "unique": 145
+        },
+        "codebook_4": {
+          "min": 29,
+          "max": 1019,
+          "mean": 546.027587890625,
+          "unique": 131
+        },
+        "codebook_5": {
+          "min": 12,
+          "max": 1020,
+          "mean": 535.0526123046875,
+          "unique": 126
+        },
+        "codebook_6": {
+          "min": 14,
+          "max": 1023,
+          "mean": 649.4736938476562,
+          "unique": 111
+        },
+        "codebook_7": {
+          "min": 6,
+          "max": 1018,
+          "mean": 553.4636840820312,
+          "unique": 128
+        }
+      },
+      "exact_match_rate": 0.0021929824724793434,
+      "distribution_similarity": {
+        "per_codebook": [
+          0.20418491959571838,
+          0.1020561084151268,
+          0.11572431027889252,
+          0.11432617902755737,
+          0.1718388795852661,
+          0.06494474411010742,
+          0.06376570463180542,
+          0.1347719132900238
+        ],
+        "average": 0.12145159486681223
+      }
+    },
+    {
+      "text": "pytanie do wszystkich kandydatów i partii. Żarty żartami. Takie kwiatki, jakie ja wypisałem, to można",
+      "original_shape": [
+        8,
+        384
+      ],
+      "generated_shape": [
+        8,
+        352
+      ],
+      "original_duration": 5.12,
+      "generated_duration": 4.693333333333333,
+      "chunk_duration": 5.108000000000004,
+      "original_stats": {
+        "codebook_0": {
+          "min": 3,
+          "max": 1019,
+          "mean": 541.2760620117188,
+          "unique": 193
+        },
+        "codebook_1": {
+          "min": 14,
+          "max": 1023,
+          "mean": 568.8125,
+          "unique": 237
+        },
+        "codebook_2": {
+          "min": 11,
+          "max": 1022,
+          "mean": 588.0859375,
+          "unique": 244
+        },
+        "codebook_3": {
+          "min": 7,
+          "max": 1022,
+          "mean": 587.4948120117188,
+          "unique": 241
+        },
+        "codebook_4": {
+          "min": 0,
+          "max": 1019,
+          "mean": 527.4973754882812,
+          "unique": 253
+        },
+        "codebook_5": {
+          "min": 0,
+          "max": 1022,
+          "mean": 544.2317504882812,
+          "unique": 255
+        },
+        "codebook_6": {
+          "min": 0,
+          "max": 1018,
+          "mean": 567.03125,
+          "unique": 261
+        },
+        "codebook_7": {
+          "min": 0,
+          "max": 1021,
+          "mean": 580.8385620117188,
+          "unique": 261
+        }
+      },
+      "generated_stats": {
+        "codebook_0": {
+          "min": 1,
+          "max": 1019,
+          "mean": 490.7528381347656,
+          "unique": 134
+        },
+        "codebook_1": {
+          "min": 12,
+          "max": 1011,
+          "mean": 504.5,
+          "unique": 119
+        },
+        "codebook_2": {
+          "min": 11,
+          "max": 1019,
+          "mean": 531.4318237304688,
+          "unique": 135
+        },
+        "codebook_3": {
+          "min": 3,
+          "max": 1014,
+          "mean": 474.0795593261719,
+          "unique": 130
+        },
+        "codebook_4": {
+          "min": 35,
+          "max": 1019,
+          "mean": 502.8636474609375,
+          "unique": 117
+        },
+        "codebook_5": {
+          "min": 12,
+          "max": 1020,
+          "mean": 543.4857788085938,
+          "unique": 118
+        },
+        "codebook_6": {
+          "min": 27,
+          "max": 1008,
+          "mean": 649.6221313476562,
+          "unique": 117
+        },
+        "codebook_7": {
+          "min": 6,
+          "max": 1015,
+          "mean": 565.1505737304688,
+          "unique": 129
+        }
+      },
+      "exact_match_rate": 0.0014204545877873898,
+      "distribution_similarity": {
+        "per_codebook": [
+          0.2007574588060379,
+          0.11561369895935059,
+          0.11645911633968353,
+          0.09800508618354797,
+          0.1252354383468628,
+          0.045904532074928284,
+          0.1569545865058899,
+          0.08270294964313507
+        ],
+        "average": 0.1177041083574295
+      }
+    },
+    {
+      "text": "3D bez potrzeby stosowania okularów, więc przejdźmy teraz do tego, jak to działa. Na początek",
+      "original_shape": [
+        8,
+        442
+      ],
+      "generated_shape": [
+        8,
+        301
+      ],
+      "original_duration": 5.8933333333333335,
+      "generated_duration": 4.013333333333334,
+      "chunk_duration": 5.881,
+      "original_stats": {
+        "codebook_0": {
+          "min": 6,
+          "max": 1022,
+          "mean": 593.8438720703125,
+          "unique": 217
+        },
+        "codebook_1": {
+          "min": 4,
+          "max": 1023,
+          "mean": 576.6674194335938,
+          "unique": 267
+        },
+        "codebook_2": {
+          "min": 1,
+          "max": 1017,
+          "mean": 581.7918701171875,
+          "unique": 252
+        },
+        "codebook_3": {
+          "min": 2,
+          "max": 1023,
+          "mean": 569.3009033203125,
+          "unique": 296
+        },
+        "codebook_4": {
+          "min": 3,
+          "max": 1021,
+          "mean": 560.3348388671875,
+          "unique": 286
+        },
+        "codebook_5": {
+          "min": 8,
+          "max": 1023,
+          "mean": 537.4705810546875,
+          "unique": 315
+        },
+        "codebook_6": {
+          "min": 0,
+          "max": 1023,
+          "mean": 553.2782592773438,
+          "unique": 308
+        },
+        "codebook_7": {
+          "min": 2,
+          "max": 1023,
+          "mean": 570.923095703125,
+          "unique": 318
+        }
+      },
+      "generated_stats": {
+        "codebook_0": {
+          "min": 2,
+          "max": 1011,
+          "mean": 507.3189392089844,
+          "unique": 128
+        },
+        "codebook_1": {
+          "min": 61,
+          "max": 1015,
+          "mean": 483.0099792480469,
+          "unique": 107
+        },
+        "codebook_2": {
+          "min": 4,
+          "max": 1019,
+          "mean": 521.64453125,
+          "unique": 116
+        },
+        "codebook_3": {
+          "min": 2,
+          "max": 1013,
+          "mean": 474.5647888183594,
+          "unique": 116
+        },
+        "codebook_4": {
+          "min": 29,
+          "max": 1019,
+          "mean": 539.2923583984375,
+          "unique": 105
+        },
+        "codebook_5": {
+          "min": 8,
+          "max": 1020,
+          "mean": 526.6411743164062,
+          "unique": 106
+        },
+        "codebook_6": {
+          "min": 16,
+          "max": 1004,
+          "mean": 636.415283203125,
+          "unique": 106
+        },
+        "codebook_7": {
+          "min": 6,
+          "max": 1022,
+          "mean": 580.6245727539062,
+          "unique": 116
+        }
+      },
+      "exact_match_rate": 0.0012458472047001123,
+      "distribution_similarity": {
+        "per_codebook": [
+          0.07691188901662827,
+          0.07527002692222595,
+          0.10513528436422348,
+          0.10754415392875671,
+          0.11940880864858627,
+          0.08412865549325943,
+          0.1135750263929367,
+          0.10909070074558258
+        ],
+        "average": 0.09888306818902493
+      }
+    }
+  ],
+  "summary": {
+    "exact_match": {
+      "mean": 0.001629380090162158,
+      "std": 0.0007578750886914394,
+      "min": 0.0,
+      "max": 0.002754820976406336
+    },
+    "distribution_similarity": {
+      "mean": 0.10628833988448605,
+      "std": 0.030717939996152223,
+      "min": 0.02857263886835426,
+      "max": 0.1332918182015419
+    },
+    "duration_accuracy": {
+      "original": {
+        "mean": 0.9984118439717354,
+        "std": 0.0006178558341929748
+      },
+      "generated": {
+        "mean": 0.7487757224543012,
+        "std": 0.15616644835223914
+      }
+    }
+  },
+  "overfitting_assessment": {
+    "score": 0.0,
+    "level": "Low",
+    "indicators": []
+  }
+}

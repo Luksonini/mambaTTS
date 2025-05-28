@@ -1,0 +1,38 @@
+Generated Sample Audios Information
+==================================================
+
+Sample 1:
+  Text: drugiej strony wśród nowych modeli monitorów Samsung na ten rok dostajemy tańszy, również 27-calowy OLED
+  Generated duration: 4.59s
+  Original duration: 6.36s
+  Audio shape: torch.Size([8, 344])
+  Batch: no_overlap_data\clean_batch_02
+
+Sample 2:
+  Text: już tego tematu tutaj rozwijał. Oczywiście też jest koszt otwarcia pozycji i zamknięcia pozycji. Tak
+  Generated duration: 4.60s
+  Original duration: 4.82s
+  Audio shape: torch.Size([8, 345])
+  Batch: no_overlap_data\clean_batch_03
+
+Sample 3:
+  Text: za pieniądze i był skłonny za to dobrze zapłacić, to nie byłoby dramy i byśmy
+  Generated duration: 3.43s
+  Original duration: 6.92s
+  Audio shape: torch.Size([8, 257])
+  Batch: no_overlap_data\clean_batch_00
+
+Sample 4:
+  Text: kontrakt CFD jest bardzo podobny do kontraktu futures, tyle że nie ma terminu zapadalności, tak
+  Generated duration: 4.63s
+  Original duration: 5.42s
+  Audio shape: torch.Size([8, 347])
+  Batch: no_overlap_data\clean_batch_03
+
+Sample 5:
+  Text: możliwości. Pokażę też kilka za i przeciw poszczególnych różnych metod. Odeślę też do linków, które
+  Generated duration: 4.21s
+  Original duration: 5.44s
+  Audio shape: torch.Size([8, 316])
+  Batch: no_overlap_data\clean_batch_03
+
